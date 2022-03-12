@@ -24,8 +24,8 @@ public class controller {
     }
 
     @GetMapping("/courses/{corseId}")
-    public Course getCourses(@PathVariable long corseId) {
-        return this.courseService.getCourse(corseId);
+    public Course getCourses(@PathVariable String corseId) {
+        return this.courseService.getCourse(Long.parseLong(corseId));
     }
     @PostMapping("/courses")
     public Course addCourse(@RequestBody Course course) {
@@ -38,9 +38,9 @@ public class controller {
     }
 
     @DeleteMapping("/courses/{corseId}")
-    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable long courseId){
+    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable String courseId){
         try {
-            this.courseService.deleteCourse((courseId));
+            this.courseService.deleteCourse(Long.parseLong(courseId));
             return new ResponseEntity<HttpStatus>(HttpStatus.OK);
         } catch (Exception e) {
            return new ResponseEntity<HttpStatus>(HttpStatus.INTERNAL_SERVER_ERROR);

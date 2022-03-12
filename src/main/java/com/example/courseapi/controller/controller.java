@@ -38,9 +38,9 @@ public class controller {
     }
 
     @DeleteMapping("/courses/{corseId}")
-    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable long corseId){
+    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable long courseId){
         try {
-            this.courseService.deleteCourse((corseId));
+            this.courseService.deleteCourse((courseId));
             return new ResponseEntity<HttpStatus>(HttpStatus.OK);
         } catch (Exception e) {
            return new ResponseEntity<HttpStatus>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -40,4 +40,15 @@ public class serviceImpl implements CourseService {
         list.add(course);
         return course;
     }
+
+    @Override
+    public Course updateCourse(Course course) {
+        list.forEach(e -> {
+            if(e.getId()==course.getId()){
+                e.setTitle(course.getTitle());
+                e.setDescription(course.getDescription());
+            }
+        });
+        return course;
+    }
 }

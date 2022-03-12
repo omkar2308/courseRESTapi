@@ -11,4 +11,6 @@ public interface CourseService {
     public Course getCourse(long corseId);
 
     public Course addCourse(Course course);
+
+    public Course updateCourse(Course course);
 }

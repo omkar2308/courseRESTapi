@@ -29,4 +29,9 @@ public class controller {
     public Course addCourse(@RequestBody Course course) {
     return  courseService.addCourse(course);
     }
+
+    @PutMapping("/courses")
+    public Course updateCourse(@RequestBody Course course){
+        return this.courseService.updateCourse(course);
+    }
 }

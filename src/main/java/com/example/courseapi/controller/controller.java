@@ -34,4 +34,8 @@ public class controller {
     public Course updateCourse(@RequestBody Course course){
         return this.courseService.updateCourse(course);
     }
+    @DeleteMapping("/courses/{corseId}")
+    public void deleteCourse(@PathVariable long corseId){
+         this.courseService.deleteCourse((corseId) );
+    }
 }

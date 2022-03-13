@@ -1,6 +1,8 @@
 package com.example.courseapi.service;
 
 import com.example.courseapi.entities.Course;
+import com.example.courseapi.repository.CourseDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,7 +12,9 @@ import java.util.stream.Collectors;
 @Service
 public class serviceImpl implements CourseService {
 
-    List <Course> list;
+
+    //without DB
+    /*List <Course> list;
 
     public serviceImpl() {
         list=new ArrayList<>();
@@ -25,11 +29,11 @@ public class serviceImpl implements CourseService {
     }
 
     @Override
-    public Course getCourse(long corseId) {
+    public Course getCourse(long courseId) {
 
         Course c=null;
         for(Course course : list){
-            if(course.getId()==corseId){
+            if(course.getId()==courseId){
                 c=course;
                 break;
             }
@@ -55,7 +59,39 @@ public class serviceImpl implements CourseService {
     }
 
     @Override
-    public void deleteCourse(long corseId) {
-     list=this.list.stream().filter(e -> e.getId()!=corseId).collect(Collectors.toList());
+    public void deleteCourse(long courseId) {
+     list=this.list.stream().filter(e -> e.getId()!=courseId).collect(Collectors.toList());
+    }*/
+
+//    with database mysql
+    @Autowired
+    private CourseDao courseDao;
+
+    @Override
+    public List<Course> getCourses() {
+        return courseDao.findAll();
     }
+
+    @Override
+    public Course getCourse(long courseId) {
+        return courseDao.findById(courseId).get();
+    }
+
+    @Override
+    public Course addCourse(Course course) {
+        courseDao.save(course);
+        return course;
+    }
+
+    @Override
+    public Course updateCourse(Course course) {
+        courseDao.save(course);
+        return course;
+    }
+
+    @Override
+    public void deleteCourse(long courseId) {
+        courseDao.delete(courseDao.getById(courseId));
+    }
+
 }

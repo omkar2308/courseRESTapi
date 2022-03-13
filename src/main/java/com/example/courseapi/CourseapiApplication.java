@@ -1,5 +1,6 @@
 package com.example.courseapi;
 
+import org.hibernate.dialect.MySQL5Dialect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

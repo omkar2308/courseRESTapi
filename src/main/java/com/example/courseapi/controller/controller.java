@@ -23,9 +23,9 @@ public class controller {
         return this.courseService.getCourses();
     }
 
-    @GetMapping("/courses/{corseId}")
-    public Course getCourses(@PathVariable String corseId) {
-        return this.courseService.getCourse(Long.parseLong(corseId));
+    @GetMapping("/courses/{courseId}")
+    public Course getCourses(@PathVariable String courseId) {
+        return this.courseService.getCourse(Long.parseLong(courseId));
     }
     @PostMapping("/courses")
     public Course addCourse(@RequestBody Course course) {
@@ -37,7 +37,7 @@ public class controller {
         return this.courseService.updateCourse(course);
     }
 
-    @DeleteMapping("/courses/{corseId}")
+    @DeleteMapping("/courses/{courseId}")
     public ResponseEntity<HttpStatus> deleteCourse(@PathVariable String courseId){
         try {
             this.courseService.deleteCourse(Long.parseLong(courseId));
